@@ -69,10 +69,6 @@ results = os.path.join("pybankanalysis.txt")
 
 print(results)
 
-with open(results,"w") as analysis:
-    analysis.write("Financial Analysis")
-    analysis.write(" ")
-    analysis.write("-----------------------")
     analysis.write(" ")
     analysis.write("Total Months: " + str(count_month))
     analysis.write("Total: " + str(total_format))
