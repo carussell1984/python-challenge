@@ -6,7 +6,7 @@ import os
 #import module for reading CVS files
 import csv
 
-#set the path to ope open the file
+#set the path to open the file
 csvpath = os.path.join('budget_data.csv')
 
 print(csvpath)
@@ -62,20 +62,20 @@ format_greatest_increase = '${:,.2f}'.format(greatest_increase)
 
 format_greatest_decrease = '${:,.2f}'.format(greatest_decrease)
 
-print(date_greatest_increase)
-print(date_greatest_decrease)
-print(format_greatest_increase)
-print(format_greatest_decrease)
 
 
 
-print("Financial Analysis")
-print(" ")
-print("-----------------------")
-print(" ")
-print("Total Months: " + str(count_month))
-print("Total: " + str(total_format))
-print("Average Change: " + str(total_average))
-print("Greatest Increase in Profits: " + "Month/Year " + date_greatest_increase + " " + format_greatest_increase)
-print("Greatest Decrease in Profits: " + "Month/Year " + date_greatest_decrease + " " + format_greatest_decrease)
-    
+results = os.path.join("pybankanalysis.txt")
+
+print(results)
+
+with open(results,"w") as analysis:
+    analysis.write("Financial Analysis")
+    analysis.write(" ")
+    analysis.write("-----------------------")
+    analysis.write(" ")
+    analysis.write("Total Months: " + str(count_month))
+    analysis.write("Total: " + str(total_format))
+    analysis.write("Average Change: " + str(total_average))
+    analysis.write("Greatest Increase in Profits: " + "Month/Year " + date_greatest_increase + " " + format_greatest_increase)
+    analysis.write("Greatest Decrease in Profits: " + "Month/Year " + date_greatest_decrease + " " + format_greatest_decrease)
