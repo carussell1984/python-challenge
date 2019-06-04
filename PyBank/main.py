@@ -9,7 +9,7 @@ import csv
 #set the path to open the file
 csvpath = os.path.join('budget_data.csv')
 
-print(csvpath)
+#print(csvpath)
 
 #generate count_month for counting rows since each row is a month
 count_month = 0
@@ -24,13 +24,13 @@ date = []
 with open(csvpath, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
 
-    print(csvreader)
+    #print(csvreader)
 
     csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
+    #print(f"CSV Header: {csv_header}")
 
     for row in csvreader: 
-        print (row)
+        #print (row)
         count_month = count_month + 1
         total += float(row[1])
         total_format = '${:,.2f}'.format(total)
@@ -67,11 +67,19 @@ format_greatest_decrease = '${:,.2f}'.format(greatest_decrease)
 
 results = os.path.join("pybankanalysis.txt")
 
-print(results)
 
-    analysis.write(" ")
-    analysis.write("Total Months: " + str(count_month))
-    analysis.write("Total: " + str(total_format))
-    analysis.write("Average Change: " + str(total_average))
-    analysis.write("Greatest Increase in Profits: " + "Month/Year " + date_greatest_increase + " " + format_greatest_increase)
-    analysis.write("Greatest Decrease in Profits: " + "Month/Year " + date_greatest_decrease + " " + format_greatest_decrease)
+
+with open(results,"w+") as analysis:
+    analysis.write("\n")
+    analysis.write("Financial Analysis\n")
+    analysis.write("-----------------------\n")
+    analysis.write("Total Months: " + str(count_month) + "\n")
+    analysis.write("Total: " + str(total_format) + "\n")
+    analysis.write("Average Change: " + str(total_average) + "\n")
+    analysis.write("Greatest Increase in Profits: " + "Month/Year-" + date_greatest_increase + " " + format_greatest_increase + "\n")
+    analysis.write("Greatest Decrease in Profits: " + "Month/Year-" + date_greatest_decrease + " " + format_greatest_decrease + "\n")
+
+readanalysis = open(results, "r")
+read = readanalysis.readlines()
+for lines in read:
+    print(lines)
