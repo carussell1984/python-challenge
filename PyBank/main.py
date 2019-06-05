@@ -26,7 +26,8 @@ date = []
 with open(csvpath, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
 
-
+    csv_header = next(csvreader)
+    
     for row in csvreader: 
         #print (row)
         count_month = count_month + 1
