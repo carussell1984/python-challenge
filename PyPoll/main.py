@@ -44,20 +44,20 @@ with open(csvpath, newline='') as csvfile:
 #also, I can not get in the print out for three decimal places. Need to continue working on this
 percent_khan= (khan/vote) * 100
 format_per_khan = round(percent_khan, 3)
-format2_per_khan = "{0}%\n".format(format_per_khan)
+format2_per_khan = "{0}%".format(format_per_khan)
 
 
 percent_correy= (correy/vote) * 100
 format_per_correy = round(percent_correy, 3)
-format2_per_correy = "{0}%\n".format(format_per_correy)
+format2_per_correy = "{0}%".format(format_per_correy)
 
 percent_li= (li/vote) * 100
 format_per_li = round(percent_li, 3)
-format2_per_li= "{0}%\n".format(format_per_li)
+format2_per_li= "{0}%".format(format_per_li)
 
 percent_otooley= (otooley/vote) * 100
 format_per_otooley = round(percent_li, 3)
-format2_per_otooley= "{0}%\n".format(format_per_otooley)
+format2_per_otooley= "{0}%".format(format_per_otooley)
 
 #Finally, a bit of logic to determine the winner. Khan is first and is the winner, but I rearranged order to test this 
 winner = "winner"
@@ -76,7 +76,6 @@ if otooley > li:
 results = os.path.join("pypollanalysis.txt")
 
 #open and write to txt, and then read and print what has been written
-#the trouble I'm having is that some of the lines that I would like to be written on 1 line is spilling onto 2. I'm going to trouble shoot this
 with open(results, "w+") as analysis:
     analysis.writelines("Election Results\n")
     analysis.writelines("------------------------------------------------\n")
@@ -87,7 +86,7 @@ with open(results, "w+") as analysis:
     analysis.writelines("Li: " + format2_per_li + " (" + str(li) +")\n")
     analysis.writelines("O'Tooley: " + format2_per_otooley + " (" + str(otooley) +")\n")
     analysis.writelines("------------------------------------------------\n")
-    analysis.writelines(winner + "\n")
+    analysis.writelines("The Winner of the election is : " + winner + "\n")
     analysis.writelines("------------------------------------------------\n")
 
 readanalysis = open(results, "r")
